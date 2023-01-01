@@ -1,0 +1,243 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[3962],{DNI1:function(t,e,n){"use strict"
+n.r(e)
+var s=n("ouhR")
+var o=n.n(s)
+var a=n("hFJA")
+var i=n("E5fe")
+var r=n("HGxv")
+var u=n("FdVj")
+class l{constructor(t){this.scoringSnapshot=t}ensureSelectEventsFire(){o()("input[type=text]").focus((function(){o()(this).select()}))}preventInsanity(t){o()("#update_history_form input.question_input").keydown((function(e){if(13===e.keyCode){t&&t(o()(this))
+e.preventDefault()
+e.stopImmediatePropagation()
+return false}}))
+o()("#update_history_form input.question_input").keyup((function(t){13===t.keyCode&&o()("#update_history_form").submit()}))}scrollToUpdatedQuestion(t,e){if(0===e.indexOf("#question")){const t=e.substring(10)
+this.scoringSnapshot.jumpToQuestion(t)}}updateSnapshotFor(t){const e=t.attr("id").substring(9)||null
+if(e){const n={}
+ENV.GRADE_BY_QUESTION||t.addClass("modified_but_not_saved")
+n.points=u["a"].parse(t.find(".user_points :text").val())
+n.comments=t.find(".question_neutral_comment .question_comment_text textarea").val()||""
+this.scoringSnapshot.update(e,n)}o()(document).triggerHandler("score_changed")}addFudgePoints(t){if(t||0===t){this.scoringSnapshot.snapshot.fudge_points=t
+this.scoringSnapshot.setSnapshot()}o()(document).triggerHandler("score_changed")}setInitialSnapshot(t){o()("#feel_free_to_toggle_message").show()
+t?this.scoringSnapshot.setSnapshot(t):this.scoringSnapshot.setSnapshot(null,true)}onScoreChanged(){const t=o()("#after_fudge_points_total")
+let e=0
+o()(".display_question .user_points:visible").each((function(){let t=u["a"].parse(o()(this).find("input.question_input").val())||0
+t=Math.round(100*t)/100
+e+=t}))
+let n=u["a"].parse(o()("#fudge_points_entry").val())||0
+n=Math.round(100*n)/100
+e+=n
+t.text(r["default"].n(e)||"0")}questions(){return o()(".question_holder").map((t,e)=>o()(e).position().top-320).toArray()}onWindowResize(){const t=o()(window).innerHeight()
+const e=o()("div.question_holder:last-child").outerHeight()
+const n=o()("#speed_update_scores_container").outerHeight()
+const s=Math.max(t-e-150,n)
+o()("#update_history_form .quiz-submission.headless").css("marginBottom",s+"px")}}n("aq8L")
+n("TvTI")
+n("w2hD")
+n("w4it")
+const c={exists:()=>window.parent&&window.parent.INST,respondsTo:t=>c.exists()&&o.a.isFunction(window.parent.INST[t]),hasProperty:t=>c.exists()&&window.parent.INST[t],set(t,e){c.exists()&&(window.parent.INST[t]=e)},get(t){if(c.hasProperty(t))return window.parent.INST[t]}}
+let d
+function p(){if(d)return d
+const t=o()("#submission_details").getTemplateData({textValues:["version_number","user_id"]})
+const e={snapshot:{user_id:t.user_id||null,version_number:t.version_number,last_question_touched:null,question_updates:{},fudge_points:0},$quizBody:null,jumpPosition(t){const e=o()("#question_"+t)
+return e.length>0?e.offset().top-110:0},checkQuizBody(){null===e.$quizBody&&(e.$quizBody=o()("html,body"))},jumpToQuestion(t){const n=e.jumpPosition(t)
+e.checkQuizBody()
+e.$quizBody.stop()
+e.$quizBody.clearQueue()
+e.$quizBody.animate({scrollTop:n},500)},jumpDirectlyToQuestion(t){const n=e.jumpPosition(t)
+e.checkQuizBody()
+e.$quizBody.scrollTop(n)},externallySet:false,setSnapshot(t,n){if(t){if(n&&e.externallySet)return
+e.externallySet=true
+e.snapshot=t
+for(const e in t.question_updates){const n=t.question_updates[e]
+const s=o()("#question_"+e)
+ENV.GRADE_BY_QUESTION||s.addClass("modified_but_not_saved")
+s.find(".question_input_hidden").val(n.points).end().find(".user_points :text").val(r["default"].n(n.points)).end().find(".question_neutral_comment .question_comment_text textarea").val(n.comments)}c.hasProperty("lastQuestionTouched")&&!ENV.GRADE_BY_QUESTION?e.jumpToQuestion(window.parent.INST.lastQuestionTouched):e.snapshot.last_question_touched&&!ENV.GRADE_BY_QUESTION&&e.jumpToQuestion(e.snapshot.last_question_touched)}else n&&c.hasProperty("lastQuestionTouched")&&!ENV.GRADE_BY_QUESTION&&e.jumpToQuestion(window.parent.INST.lastQuestionTouched);(e.externallySet||n)&&o()("#feel_free_to_toggle_message").show()
+c.respondsTo("refreshQuizSubmissionSnapshot")&&window.parent.INST.refreshQuizSubmissionSnapshot(e.snapshot)},update(t,n){e.snapshot.question_updates[t]=n
+e.snapshot.last_question_touched=t
+e.setSnapshot()}}
+return d=e}let h
+function f(){if(h)return h
+const t=p()
+h=new l(t)
+return h}let m
+function _(){if(m)return m
+const t=p()
+const e=f()
+const n={index:0,windowSize:10,minWidth:66,startingLeftPos:32,navItemWidth:34,initialize(){o()(".user_points > .question_input").each((function(t){n.updateStatusFor(o()(this))}))
+if(ENV.GRADE_BY_QUESTION){const e=parseInt(c.get("active_question_index"),10)
+const n=o()(".q"+e).data("id")
+Number.isNaN(n)||t.jumpDirectlyToQuestion(n)}n.updateWindowSize()
+n.setScrollWindowPosition(0)},size:()=>o()(".question-nav-link").length,tooBig:()=>n.size()>n.windowSize,updateWindowSize(){const t=o()(".quiz-nav, .quiz-nav-fullpage").width()
+const e=10
+const s=t-2*e
+const a=Math.floor((s-n.minWidth)/n.navItemWidth)
+n.windowSize=a
+const i=a*n.navItemWidth+n.minWidth
+o()(".quiz-nav .nav, .quiz-nav-fullpage .nav").animate({width:i+"px"},10)},navArrowCache:null,$navArrows(){null===n.navArrowCache&&(n.navArrowCache=o()(".quiz-nav .nav-arrow, .quiz-nav-fullpage .nav-arrow"))
+return n.navArrowCache},navWrapperCache:null,$navWrapper(){null===n.navWrapperCache&&(n.navWrapperCache=o()("#quiz-nav-inner-wrapper"))
+return n.navWrapperCache},updateArrows(){if(n.tooBig()){n.$navArrows().show()
+n.$navWrapper().css({position:"absolute"})}else{n.$navArrows().hide()
+n.$navWrapper().css({position:"relative"})}},toggleDropShadow(){o()(".quiz-nav").toggleClass("drshadow",o()(document).scrollTop()>0)},updateStatusFor(t){try{const e=t.attr("data-question-id")
+const n=u["a"].parse(t.val())
+o()("#quiz_nav_"+e).toggleClass("complete",!Number.isNaN(n))}catch(t){}},activateLink(t){o()(".quiz-nav li").removeClass("active")
+o()(".q"+t).addClass("active")},activateCorrectLink(){let t=1
+const s=e.questions()
+const a=o()(document).scrollTop()
+const i=o()(".question")
+for(let e=0;e<=s.length;e++){const r=o()(i[e])
+const u=e+1
+if(a>s[e]&&a<s[e+1]||e===s.length-1&&a>s[e]){t=u
+c.set("active_question_index",u)
+n.activateLink(u)
+r.addClass("selected_single_question")}else{o()(".q"+u).removeClass("active")
+r.removeClass("selected_single_question")}}n.setScrollWindowPosition(t)
+return t},showQuestionsInWindow(t,e){const s=o()("#quiz-nav-inner-wrapper")
+const a=n.startingLeftPos-t*n.navItemWidth
+const i=a+"px"
+const r=s.css("left")
+if(i!==r){s.stop()
+s.clearQueue()
+s.animate({left:a+"px"},300)}},windowScrollLength:()=>Math.floor(n.windowSize/2),setScrollWindowPosition(t){Number.isNaN(t)&&(t=0)
+n.index=t
+n.updateArrows()
+if(n.tooBig()){let e=t-n.windowScrollLength()
+const s=n.size()-n.windowSize
+if(e<0){e=0
+n.index=0}else if(e>s){e=s
+n.index=s+n.windowScrollLength()}const o=e+n.windowSize-1
+n.showQuestionsInWindow(e,o)}},previousQuestionBlock(){n.setScrollWindowPosition(n.index-n.windowSize)},nextQuestionBlock(){n.setScrollWindowPosition(n.index+n.windowSize)},onScroll(){n.activateCorrectLink()
+n.toggleDropShadow()}}
+return m=n}o()(document).ready((function(){const t=p()
+const e=f()
+const n=_()
+const s=function(t){const s=t.parents(".display_question")
+e.updateSnapshotFor(s)
+if(t.hasClass("question_input")){const e=u["a"].parse(t.val())
+const o=Number.isNaN(e)?"":e
+s.find(".question_input_hidden").val(o)
+n.updateStatusFor(t)}}
+e.ensureSelectEventsFire()
+e.preventInsanity(s)
+if(ENV.GRADE_BY_QUESTION){o()(document).scroll(n.onScroll)
+e.onWindowResize()
+o()(".question_holder").click((function(){o()(".quiz-nav li").removeClass("active")
+o()(".question").removeClass("selected_single_question")
+const t=o()(".question")
+const e=o()(this).find(".question")
+const n=t.index(e)+1
+c.set("active_question_index",n)
+o()(".q"+n).addClass("active")
+e.addClass("selected_single_question")}))}n.initialize()
+o()(document).fragmentChange(e.scrollToUpdatedQuestion)
+if(c.respondsTo("getQuizSubmissionSnapshot")){const n=window.parent.INST.getQuizSubmissionSnapshot(t.snapshot.user_id,t.snapshot.version_number)
+e.setInitialSnapshot(n)}ENV.SCORE_UPDATED&&c.respondsTo("clearQuizSubmissionSnapshot")&&window.parent.INST.clearQuizSubmissionSnapshot(t.snapshot)
+o()(".question_holder .user_points .question_input,.question_holder .question_neutral_comment .question_comment_text textarea").change((function(){s(o()(this))}))
+o()("#fudge_points_entry").change((function(){const t=u["a"].parse(o()(this).val())
+const n=u["a"].parse(o()(this).val())
+const s=Number.isNaN(n)?"":n
+o()("#fudge_points_input").val(s)
+e.addFudgePoints(t)}))
+o()(document).bind("score_changed",e.onScoreChanged)
+o()(".question-nav-link").click((function(e){e.preventDefault()
+const n=o()(this).attr("data-id")
+t.jumpToQuestion(n)}))
+o()("#nav-prev").click(t=>{t.preventDefault()
+n.previousQuestionBlock()})
+o()("#nav-next").click(t=>{t.preventDefault()
+n.nextQuestionBlock()})
+o()(window).resize(()=>{n.updateWindowSize()
+n.setScrollWindowPosition(n.index)
+e.onWindowResize()})
+ENV.SCORE_UPDATED&&c.respondsTo("refreshGrades")&&window.parent.INST.refreshGrades()}))
+o()(()=>{const t=new a["a"]
+t.applyArrows()
+i["a"].disableInputs("[type=radio], [type=checkbox]")
+i["a"].setWidths()})},E5fe:function(t,e,n){"use strict"
+var s=n("ouhR")
+var o=n.n(s)
+const a={disableInputs(t){const e=o()("body"),n=o()("<div />",{class:"input_cover"})
+n.on("mouseleave",(function(t){o()(this).remove()}))
+o()(t).on("mouseenter",(function(t){const s=o()(this),a=n.clone(true)
+a.css({height:s.height()+12,width:s.width()+12,position:"absolute",left:s.offset().left-6,top:s.offset().top-6,zIndex:15,background:"url(/images/blank.png) 0 0 repeat"})
+e.append(a)}))},setWidths(t){o()(t||".answer input[type=text]").each((function(){o()(this).width(9.5*o()(this).val().length)}))}}
+e["a"]=a},FdVj:function(t,e,n){"use strict"
+var s=n("qJBq")
+var o=n.n(s)
+var a=n("HGxv")
+const i={_parseNumber:o.a,parse(t){if(null==t)return NaN
+if("number"===typeof t)return t
+let e=i._parseNumber(t.toString(),{thousands:a["default"].lookup("number.format.delimiter"),decimal:a["default"].lookup("number.format.separator")})
+isNaN(e)&&(e=i._parseNumber(t))
+t.toString().match(/e/)&&isNaN(e)&&(e=parseFloat(t))
+return e},validate:t=>!isNaN(i.parse(t))}
+e["a"]=i},TvTI:function(t,e,n){"use strict"
+var s=n("ouhR")
+var o=n.n(s)
+var a=n("gI0r")
+n("8JEM")
+o.a.fn.fillTemplateData=function(t){if(this.length&&t){t.iterator&&this.find("*").andSelf().each((function(){const e=o()(this)
+o.a.each(["name","id","class"],(n,s)=>{e.attr(s)&&e.attr(s,e.attr(s).replace(/-iterator-/,t.iterator))})}))
+t.id&&this.attr("id",t.id)
+let s=false
+if(t.data)for(var e in t.data){if(t.except&&-1!=o.a.inArray(e,t.except))continue
+t.data[e]&&t.dataValues&&-1!=o.a.inArray(e,t.dataValues)&&this.data(e,t.data[e].toString())
+const i=this.find("."+e)
+var n=t.avoid||""
+i.each((function(){const i=o()(this)
+if(i.length>0&&0===i.closest(n).length){"undefined"!==typeof t.data[e]&&null!==t.data[e]||(t.data[e]="")
+if(t.htmlValues&&-1!=o.a.inArray(e,t.htmlValues)){i.html(o.a.raw(t.data[e].toString()))
+if(i.hasClass("user_content")){s=true
+i.removeClass("enhanced")
+i.data("unenhanced_content_html",t.data[e].toString())}}else if("INPUT"==i[0].tagName.toUpperCase())i.val(t.data[e])
+else try{const n=t.data[e].toString()
+i.html(Object(a["a"])(n))}catch(t){}}}))}t.hrefValues&&t.data&&this.find("a,span[rel]").each((function(){let e,n,s,a=o()(this)
+for(const i in t.hrefValues){if(!t.hrefValues.hasOwnProperty(i))continue
+const r=t.hrefValues[i]
+if(e=a.attr("href")){const n=o.a.replaceTags(e,r,encodeURIComponent(t.data[r]))
+const s=a.text()===a.html()?a.text():null
+if(e!==n){a.attr("href",n)
+s&&a.text(s)}}(n=a.attr("rel"))&&a.attr("rel",o.a.replaceTags(n,r,t.data[r]));(s=a.attr("name"))&&a.attr("name",o.a.replaceTags(s,r,t.data[r]))}}))
+s&&o()(document).triggerHandler("user_content_change")}return this}
+o.a.fn.fillTemplateData.defaults={htmlValues:null,hrefValues:null}
+o.a.fn.getTemplateData=function(t){if(!this.length||!t)return{}
+var e,n={}
+if(t.textValues){const e=this
+t.textValues.forEach(t=>{const a=e.find("."+t.replace(/\[/g,"\\[").replace(/\]/g,"\\]")+":first")
+s=o.a.trim(a.text())
+"&nbsp;"===a.html()&&(s="")
+1===s.length&&160===s.charCodeAt(0)&&(s="")
+n[t]=s})}if(t.dataValues)for(e in t.dataValues){var s=this.data(t.dataValues[e])
+s&&(n[t.dataValues[e]]=s)}if(t.htmlValues)for(e in t.htmlValues){const a=this.find("."+t.htmlValues[e].replace(/\[/g,"\\[").replace(/\]/g,"\\]")+":first")
+s=null
+s=a.hasClass("user_content")&&a.data("unenhanced_content_html")?a.data("unenhanced_content_html"):o.a.trim(a.html())
+n[t.htmlValues[e]]=s}return n}
+o.a.fn.getTemplateValue=function(t,e){const n=o.a.extend({},e,{textValues:[t]})
+return this.getTemplateData(n)[t]}},qJBq:function(t,e){(function(){var e,n,s
+s=[]
+e={}
+t.exports=n=function(t,n,o){var a,i,r,u,l,c,d,p,h
+null==o&&(o=true)
+if("string"===typeof n){if(2!==n.length)throw{name:"ArgumentException",message:"The format for string options is '<thousands><decimal>' (exactly two characters)"}
+h=n[0],a=n[1]}else if(Array.isArray(n)){if(2!==n.length)throw{name:"ArgumentException",message:"The format for array options is ['<thousands>','[<decimal>'] (exactly two elements)"}
+h=n[0],a=n[1]}else{h=(null!=n?n.thousands:void 0)||(null!=n?n.group:void 0)||e.thousands
+a=(null!=n?n.decimal:void 0)||e.decimal}d=""+h+a+o
+c=s[d]
+if(null==c){r=o?3:1
+c=s[d]=new RegExp("^\\s*([+-]?(?:(?:\\d{1,3}(?:\\"+h+"\\d{"+r+",3})+)|\\d*))(?:\\"+a+"(\\d*))?\\s*$")}p=t.match(c)
+if(!(null!=p&&3===p.length))return NaN
+u=p[1].replace(new RegExp("\\"+h,"g"),"")
+i=p[2]
+l=parseFloat(u+"."+i)
+return l}
+t.exports.setOptions=function(t){var n,s
+for(n in t){s=t[n]
+e[n]=s}}
+t.exports.factoryReset=function(){e={thousands:",",decimal:"."}}
+t.exports.withOptions=function(t,e){null==e&&(e=true)
+return function(s){return n(s,t,e)}}
+t.exports.factoryReset()}).call(this)},w4it:function(t,e,n){"use strict"
+var s=n("ouhR")
+var o=n.n(s)
+o()(".question select").bind("mousewheel",t=>t.preventDefault())}}])
+
+//# sourceMappingURL=quiz_history-c-bd082737ec.js.map

@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+:root {
+    --main-color: #6d2543;
+    --black-color: rgb(13, 12, 12);
+    --border: 0.1rem solid rgba(255, 255, 255, 0.3);
+    --white-color : whitesmoke;
+    --orange-color : #d4920e;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s ease;
+
+    
+}
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+
+}
+
+html ::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: whitesmoke;
+
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 3rem;
+    background-color: var(--black-color);
+
+}
+
+html ::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+
+}
+
+
+html, body{
+    padding: 0px;
+    margin: 0px;
+}
+
+section {
+    padding: 3.5rem ;
+
+}
+#canvas{
+    position: relative;
+}
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 2rem 3.75rem;
+    border-radius: 30rem;
+    font-size: 1.7rem;
+    color: whitesmoke;
+    background-color: var(--black-color);
+    cursor: pointer;
+}
+
+.btn :hover {
+    opacity: 0.4;
+}
+.heading {
+    color:var(--main-color);
+    font-size: 4rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 0.1rem solid var(--main-color);
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+.header {
+    background-color:#d4920e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    margin: 3rem 5%;
+    border-radius: 20rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    width: 90%;
+}
+.header .butons a {
+    margin: 0 1rem;
+    font-size: 14px;
+    color: var(--black-color);
+    border-bottom: 0.1rem solid transparent;
+}
+.header .butons .active,
+.header .butons a:hover {
+    border-color:var(--white-color);
+    padding-bottom: 0.2rem;
+}
+.header  .buttons button {
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    background-color: transparent;
+}
+.header .logo img {
+    height: 90px;
+
+}
+.content p{
+    font-size: 72px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    color: var(--white-color);
+}
+#games{
+    background-color: var(--main-color);
+    margin-top: -10px;
+}
+#games.heading{
+    color: var(--orange-color);
+    border-bottom: 0.1rem solid var(--orange-color);
+}
+#games{
+    padding: 0;
+    padding-bottom: 0;
+}
+.content{
+    margin-top:0;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    text-align: center;
+    background-color: var(--main-color);
+}
+.content .item .install{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 25%;
+    top: 50%;
+    justify-content: center;
+    text-align: center;
+}
+.content  .item .install h1{
+    font-size: 30px;
+    position: absolute;
+    color: var(--white-color);
+
+}
+.content  .item .install .btn1{
+
+    font-size: 20px;
+    top: 25%;
+    left: 14%;
+    position: absolute;
+    color:rgb(63, 103, 63);
+    border-radius: 10rem;
+    background-color:whitesmoke;
+    cursor: pointer;
+    padding: 0 5px;
+    font-weight: 900;
+    opacity: 0.7;
+}
+.content  .item .install .btn1:hover{
+    opacity: 1.4;
+}
+.content .item .install .btn{
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    background-color: rgb(63, 103, 63);
+    padding: 2rem 6rem;
+    border-radius: 10rem;
+    font-size: 1.7rem;
+    opacity: 0.7;
+}
+.content .item .install .btn:hover{
+    opacity: 1.4;
+}
+
+.content .item{
+    position:relative;
+    width: 100%;
+    overflow: hidden;
+    transition: all ease 0.8s;
+}
+.content .item img{
+    width: 100%;
+    object-fit:cover;
+    opacity: 0.6;
+    border-radius: 10px;
+    height: 100%;
+}
+.content .item:hover{
+    width: 125%;
+}
+.textt {
+    color: whitesmoke;
+    font-size: 70px;
+    padding-top: 10%;
+}
+.textt span{
+    font-size: 33px;
+    margin-top: 10%;
+}
+.textt {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+}
+.textt .install .btn{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    opacity: 0.7;
+    border-radius: 30rem;
+    top: 20%;
+}
+.textt .install .btn:hover{
+    opacity: 1.5;
+}
+#squad{
+    background-color: #d4920e;
+    margin-top: -10px;
+}
+#squad .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 10px;
+    margin-top: 10rem;
+}
+#squad h1{
+    font-size: 40px;
+    margin-top: 0;
+}
+#squad .box-container .box {
+    text-align: center;
+    background-color:var(--main-color);
+    position: relative;
+    border-radius: 3rem;
+    height: 45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    width: 100%;
+
+}
+#squad .box-container img {
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    border-radius: 3rem;
+    transform: unset;
+    
+
+}
+#squad .box-container .box-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    top: -40%;
+}
+#squad .box-container .box-bottom h3{
+    color: antiquewhite;
+    font-size: 20px;
+}
+#squad .box-container .box-bottom .info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+#squad .box-container .box-bottom .job{
+    color: antiquewhite;
+    font-size: 15px;
+    margin-right: 20px;
+}
+#about{
+    background-color: var(--main-color);
+}
+#about .heading{
+    color: #d4920e;
+    font-size: 4rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 0.1rem solid var(--orange-color);
+}
+#about .row{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+}
+#about .row .image{
+    flex: 1 1 45rem;
+
+}
+#about .row img{
+    width: 100%;  
+
+}
+#about .row .contents{ 
+    flex: 1 1 45rem;
+
+}
+#about .row .contents h3{ 
+    font-size: 3rem;
+    color: whitesmoke;
+
+}
+#about .row .contents p{ 
+    font-size: 1.6rem;
+    color: var(--white-color);
+    padding: 1rem 0;
+    line-height: 1.8;
+
+}
+#contact{
+    background-color: var(--orange-color);
+}
+#contact .row{
+    display: flex;
+    background-color:var(--main-color);
+    flex-wrap: wrap;
+    height: 40rem;
+}
+#contact .row .map{
+    flex: 1 1 45rem;
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+
+}
+#contact .row img{
+    height: 30rem;
+    width: 50rem;
+}
+.footer{
+    background-color:var(--main-color);
+    text-align: center;
+}
+.footer .share{
+    padding: 2rem 0;
+}
+.footer .share a{
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    color: whitesmoke;
+    font-size: 2rem;
+    border: var(--border);
+    border-radius: 50%;
+    margin: 0.3rem;
+}
+.footer .share a:hover{
+    background-color:var(--orange-color);
+}
+.footer .links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.footer .links a{
+    background-color: var(--main-color);
+    padding: 0.7rem 2rem;
+    color: whitesmoke;
+    font-size: 1rem;
+    border: var(--border);
+}
+.footer .links a:hover{
+    background-color:var(--orange-color);
+}
+.footer .links a.active{
+    background-color:var(--orange-color);
+}
+.footer .filx img{
+fill: var(--orange-color);
+height: 50px;
+width: 165px;
+padding-top: 20px;
+}
+.footer .credit{
+    font-size: 2rem;
+    color: var(--white-color);
+    font-weight: 300;
+    padding-top: 1.5rem;
+}
+@media (max-width: 768px){
+    #menu-btn{
+        display: inline-block;
+    }
+}
+#canvas{
+    width: 100%;
+}
